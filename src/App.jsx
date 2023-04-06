@@ -1,6 +1,10 @@
-import './App.css'
+import './App.css';
 
 function App() {
+
+  const addTodo = () => {
+    alert('TODO');
+  }
 
   return (
     <div className='App'>
@@ -8,18 +12,21 @@ function App() {
         <div className='menu-button'></div>
         <h1>My Todos</h1>
       </div>
+
       <div className='todolist'>
-        TodoList
+
       </div>
+
       <div className='controls'>
-        <input 
+        <input
           type='text'
           id='todo-input'
           placeholder='Create new todo...'
         />
         <button
           id='add-todo-btn'
-        ></button>
+          onClick={() => addTodo()}
+        >+</button>
       </div>
     </div>
   )
