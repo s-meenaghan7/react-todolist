@@ -1,7 +1,17 @@
 .todo {
+  display: flex;
+  justify-content: space-between;
   padding: 1rem;
   margin-bottom: 0.3rem;
   background-color: #666;
   border-radius: 15px;
   text-align: left;
+}
+
+.delete-btn {
+  padding: 0.3rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #a00;
+  cursor: pointer;
 }

@@ -9,13 +9,18 @@ export default function AppContainer() {
   const addTodo = () => {
     if (todo.trim() === '') return;
 
-    const newTodo = todo;
+    const newId = todos.at(-1) ? todos.at(-1).id + 1 : 1;
+    const newTodo = { id: newId, todo: todo };
     setTodos([...todos, newTodo]);
     setTodo('');
   }
 
+  const removeTodo = (id) => {
+    setTodos(todos => todos.filter(todo => todo.id !== id));
+  }
+
   return (
-    <div className='App'>
+    <div className='container'>
       <div className='navbar'>
         <div className='menu-button'></div>
         <h1>My Todos</h1>
@@ -23,8 +28,12 @@ export default function AppContainer() {
 
       <div className='todolist'>
         {
-          todos.map((todo, i) => 
-            <Todo key={i} todo={todo}/>)
+          todos.map((todo) => 
+            <Todo key={todo.id}
+              todo={todo}
+              removeTodo={removeTodo}
+            />
+          )
         }
       </div>
 
