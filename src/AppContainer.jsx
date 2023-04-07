@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './App.css';
+import './AppContainer.css';
 import Todo from './components/Todo';
 
-export default function App() {
+export default function AppContainer() {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
 
