@@ -31,7 +31,6 @@
 
 /* ------------------------- TODOLIST ------------------------- */
 .todolist {
-  outline: 2px solid red;
   height: 100%;
   margin: 1rem 0;
 }
