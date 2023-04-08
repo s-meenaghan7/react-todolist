@@ -6,7 +6,8 @@ export default function AppContainer() {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
 
-  const addTodo = () => {
+  const addTodo = (e) => {
+    e.preventDefault();
     if (todo.trim() === '') return;
 
     const newId = todos.at(-1) ? todos.at(-1).id + 1 : 1;
@@ -37,7 +38,7 @@ export default function AppContainer() {
         }
       </div>
 
-      <div className='controls'>
+      <form className='controls' onSubmit={addTodo}>
         <input
           type='text'
           value={todo}
@@ -47,10 +48,9 @@ export default function AppContainer() {
         />
         <button
           id='add-todo-btn'
-          type='button'
-          onClick={() => addTodo()}
+          type='submit'
         >+</button>
-      </div>
+      </form>
     </div>
   )
 }
