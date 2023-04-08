@@ -16,14 +16,18 @@ export default function Todo({ todo, removeTodo }) {
     <div className='todo'>
       {
         !isEditing ?
-          thisTodo
+          <span onDoubleClick={() => setIsEditing(true)}>
+            {thisTodo}
+          </span>
           :
           <form onSubmit={updateThisTodo}>
             <input
+              autoFocus
               type='text'
               value={thisTodo}
-              onChange={(e) => setThisTodo(e.target.value)}
+              id='edit-todo-input'
               onBlur={(e) => updateThisTodo(e)}
+              onChange={(e) => setThisTodo(e.target.value)}
             />
             <input type='submit' style={{ "display": "none" }} />
           </form>
