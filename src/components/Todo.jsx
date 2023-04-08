@@ -16,7 +16,10 @@ export default function Todo({ todo, removeTodo }) {
     <div className='todo'>
       {
         !isEditing ?
-          <span onDoubleClick={() => setIsEditing(true)}>
+          <span
+            onDoubleClick={() => setIsEditing(true)}
+            style={{ "width": "70%", "textOverflow": "ellipsis", "overflow": "hidden", "whiteSpace": "nowrap" }}
+          >
             {thisTodo}
           </span>
           :
