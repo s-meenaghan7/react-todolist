@@ -23,13 +23,20 @@ export default function AppContainer() {
   return (
     <div className='container'>
       <div className='navbar'>
-        <div className='menu-button'></div>
-        <h1>My Todos</h1>
+        <div style={{ "display": "flex", "alignItems": "center" }}>
+          <div className='menu-button'></div>
+          <h1>My Todos</h1>
+        </div>
+        <div>
+          <span style={{ "marginRight": "25px" }}>
+            {todos.length} {todos.length === 1 ? 'Todo' : 'Todos'}
+          </span>
+        </div>
       </div>
 
       <div className='todolist'>
         {
-          todos.map((todo) => 
+          todos.map((todo) =>
             <Todo key={todo.id}
               todo={todo}
               removeTodo={removeTodo}
