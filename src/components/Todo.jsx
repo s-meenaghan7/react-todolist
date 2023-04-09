@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Todo.css';
 
-export default function Todo({ todo, removeTodo }) {
+export default function Todo({ todo, position, removeTodo }) {
   const [thisTodo, setThisTodo] = useState(todo.todo);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -14,11 +14,14 @@ export default function Todo({ todo, removeTodo }) {
 
   return (
     <div className='todo'>
+      <span>
+        {position}.
+      </span>
       {
         !isEditing ?
           <span
+            id='todo-data'
             onDoubleClick={() => setIsEditing(true)}
-            style={{ "width": "70%", "textOverflow": "ellipsis", "overflow": "hidden", "whiteSpace": "nowrap" }}
           >
             {thisTodo}
           </span>
@@ -39,6 +42,7 @@ export default function Todo({ todo, removeTodo }) {
         <button
           type='button'
           id='edit-btn'
+          title='Edit this todo'
           onClick={() => setIsEditing(true)}
         >
           EDIT
@@ -46,6 +50,7 @@ export default function Todo({ todo, removeTodo }) {
         <button
           type='button'
           id='delete-btn'
+          title='Delete this todo'
           onClick={() => removeTodo(todo.id)}
         >
           DELETE

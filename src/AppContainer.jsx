@@ -30,9 +30,10 @@ export default function AppContainer() {
 
       <div className='todolist'>
         {
-          todos.map((todo) =>
+          todos.map((todo, i) =>
             <Todo key={todo.id}
               todo={todo}
+              position={i + 1}
               removeTodo={removeTodo}
             />
           )

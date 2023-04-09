@@ -9,6 +9,7 @@ export default function AddTodoControls({ todo, setTodo, addTodo }) {
       onSubmit={addTodo}
     >
       <input
+        required
         type='text'
         value={todo}
         id='todo-input'
@@ -16,8 +17,9 @@ export default function AddTodoControls({ todo, setTodo, addTodo }) {
         onChange={(e) => setTodo(e.target.value)}
       />
       <button
-        id='add-todo-btn'
         type='submit'
+        id='add-todo-btn'
+        title='Add todo'
       >+</button>
     </form>
   );

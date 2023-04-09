@@ -13,6 +13,13 @@
   -ms-animation: fadeIn 0.5s;
 }
 
+#todo-data {
+  width: 70%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
@@ -60,7 +67,7 @@
 }
 
 #edit-todo-input {
-  width: 100%;
+  width: 90%;
   border: none;
   border-radius: 10px;
   padding: 0.3rem;
