@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './AppContainer.css';
 import Todo from './components/Todo';
+import AddTodoControls from './components/AddTodoControls';
+import MenuBar from './components/MenuBar';
 
 export default function AppContainer() {
   const [todo, setTodo] = useState('');
@@ -22,17 +24,9 @@ export default function AppContainer() {
 
   return (
     <div className='container'>
-      <div className='navbar'>
-        <div style={{ "display": "flex", "alignItems": "center" }}>
-          <div className='menu-button'></div>
-          <h1>My Todos</h1>
-        </div>
-        <div>
-          <span style={{ "marginRight": "25px" }}>
-            {todos.length} {todos.length === 1 ? 'Todo' : 'Todos'}
-          </span>
-        </div>
-      </div>
+      <MenuBar 
+        todoCount={todos.length}
+      />
 
       <div className='todolist'>
         {
@@ -45,19 +39,11 @@ export default function AppContainer() {
         }
       </div>
 
-      <form className='controls' onSubmit={addTodo}>
-        <input
-          type='text'
-          value={todo}
-          id='todo-input'
-          placeholder='Create new todo...'
-          onChange={(e) => setTodo(e.target.value)}
-        />
-        <button
-          id='add-todo-btn'
-          type='submit'
-        >+</button>
-      </form>
+      <AddTodoControls 
+        todo={todo}
+        setTodo={setTodo}
+        addTodo={addTodo}
+      />
     </div>
   )
 }

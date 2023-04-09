@@ -23,7 +23,7 @@ export default function Todo({ todo, removeTodo }) {
             {thisTodo}
           </span>
           :
-          <form onSubmit={updateThisTodo}>
+          <form autoComplete='off' onSubmit={updateThisTodo}>
             <input
               autoFocus
               type='text'

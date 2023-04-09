@@ -1,0 +1,40 @@
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 2px solid #666;
+}
+
+#todo-input {
+  color: #eee;
+  font-size: 1em;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+#add-todo-btn {
+  content: '';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  padding: 2rem;
+  margin: 1rem;
+  cursor: pointer;
+  background-color: #0b0;
+  transition: background 0.1s;
+}
+
+#add-todo-btn:hover {
+  background-color: #0d0;
+}
+
+#add-todo-btn:active {
+  background-color: #080;
+}
