@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import AppContainer from './AppContainer'
+import TodoList from './TodoList'
 import './main.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AppContainer />
+    <TodoList />
   </React.StrictMode>,
 )

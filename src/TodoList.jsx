@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import './AppContainer.css';
+import './TodoList.css';
 import Todo from './components/Todo';
 import AddTodoControls from './components/AddTodoControls';
 import MenuBar from './components/MenuBar';
 
-export default function AppContainer() {
+export default function TodoList() {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
 
