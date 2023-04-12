@@ -4,8 +4,7 @@ import '../styles/MenuBar.css';
 export default function MenuBar({ todoCount }) {
   return (
     <div className='menu-bar'>
-      <div style={{ "display": "flex", "alignItems": "center" }}>
-        <div className='menu-button'></div>
+      <div style={{ "marginLeft": "25px"}}>
         <h1>My Todos</h1>
       </div>
       <div>
