@@ -11,13 +11,13 @@ header h2 {
 
 /* ------------------- MEDIA QUERIES ------------------- */
 @media screen and (max-width: 365px) {
-  h1 {
+  h2 {
     font-size: 1em;
   }
 }
 
 @media screen and (max-width: 290px) {
-  h1 {
+  h2 {
     display: none;
   }
 }

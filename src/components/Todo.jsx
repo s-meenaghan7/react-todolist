@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import '../styles/Todo.css';
 
-export default function Todo({ todo, position, removeTodo }) {
-  const [thisTodo, setThisTodo] = useState(todo.todo);
-  const [isEditing, setIsEditing] = useState(false);
+export default function Todo({ todo: {todo, id}, position, removeTodo }) {
+  const [thisTodo, setThisTodo] = useState(todo);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
-  const updateThisTodo = (e) => {
+  const exitUpdating = (e) => {
     e.preventDefault();
 
     if (thisTodo.trim() !== '')
-      setIsEditing(false);
+      setIsUpdating(false);
   }
 
   return (
@@ -18,32 +19,32 @@ export default function Todo({ todo, position, removeTodo }) {
         {position}.
       </span>
       {
-        !isEditing ?
+        !isUpdating ?
           <span
             id='todo-data'
-            onDoubleClick={() => setIsEditing(true)}
+            onDoubleClick={() => setIsUpdating(true)}
           >
             {thisTodo}
           </span>
           :
-          <form autoComplete='off' onSubmit={updateThisTodo}>
+          <form autoComplete='off' onSubmit={exitUpdating}>
             <input
               autoFocus
               type='text'
               value={thisTodo}
               id='edit-todo-input'
-              onBlur={(e) => updateThisTodo(e)}
+              onBlur={(e) => exitUpdating(e)}
               onChange={(e) => setThisTodo(e.target.value)}
             />
             <input type='submit' style={{ "display": "none" }} />
           </form>
       }
-      <div>
+      <div className='btn-container'>
         <button
           type='button'
           id='edit-btn'
           title='Edit this todo'
-          onClick={() => setIsEditing(true)}
+          onClick={() => setIsUpdating(true)}
         >
           EDIT
         </button>
@@ -51,9 +52,17 @@ export default function Todo({ todo, position, removeTodo }) {
           type='button'
           id='delete-btn'
           title='Delete this todo'
-          onClick={() => removeTodo(todo.id)}
+          onClick={() => removeTodo(id)}
         >
           DELETE
+        </button>
+        <button
+          type='button'
+          id='complete-btn'
+          title='Mark this todo completed'
+          onClick={() => console.log(isComplete)}
+        >
+          DONE
         </button>
       </div>
     </div>
