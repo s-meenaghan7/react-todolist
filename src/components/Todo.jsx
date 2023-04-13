@@ -6,6 +6,12 @@ export default function Todo({ todo: {todo, id}, position, removeTodo }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
+  const startUpdating = () => {
+    if (!isComplete) {
+      setIsUpdating(true);
+    }
+  }
+
   const exitUpdating = (e) => {
     e.preventDefault();
 
@@ -22,7 +28,7 @@ export default function Todo({ todo: {todo, id}, position, removeTodo }) {
         !isUpdating ?
           <span
             id='todo-data'
-            onDoubleClick={() => setIsUpdating(true)}
+            onDoubleClick={() => startUpdating()}
           >
             {thisTodo}
           </span>
@@ -44,7 +50,7 @@ export default function Todo({ todo: {todo, id}, position, removeTodo }) {
           type='button'
           id='edit-btn'
           title='Edit this todo'
-          onClick={() => setIsUpdating(true)}
+          onClick={() => startUpdating()}
         >
           EDIT
         </button>
