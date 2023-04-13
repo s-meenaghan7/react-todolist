@@ -24,27 +24,56 @@ export default function TodoList() {
 
   return (
     <div className='container'>
-      <MenuBar 
-        todoCount={todos.length}
-      />
-
-      <div className='todolist'>
-        {
-          todos.map((todo, i) =>
-            <Todo key={todo.id}
-              todo={todo}
-              position={i + 1}
-              removeTodo={removeTodo}
-            />
-          )
-        }
+      <div className='tab-container'>
+        <div className='tab left'>
+          <input
+            type='radio'
+            name='todo'
+            value='In Progress'
+            id='incomplete'
+            defaultChecked
+          />
+          <label className='left' htmlFor='incomplete'>
+            In Progress
+          </label>
+        </div>
+        <div className='tab right'>
+          <input
+            type='radio'
+            name='todo'
+            value='Complete'
+            id='complete'
+          />
+          <label className='right' htmlFor='complete'>
+            Complete
+          </label>
+        </div>
       </div>
 
-      <AddTodoControls 
-        todo={todo}
-        setTodo={setTodo}
-        addTodo={addTodo}
-      />
+      <div className='inner-container'>
+        <MenuBar
+          todoCount={todos.length}
+        />
+
+        <div className='todolist'>
+          {
+            todos.map((todo, i) =>
+              <Todo key={todo.id}
+                todo={todo}
+                position={i + 1}
+                removeTodo={removeTodo}
+              />
+            )
+          }
+        </div>
+
+        <AddTodoControls
+          todo={todo}
+          setTodo={setTodo}
+          addTodo={addTodo}
+        />
+      </div>
+
     </div>
   )
 }
