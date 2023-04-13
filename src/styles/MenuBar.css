@@ -5,6 +5,10 @@
   border-bottom: 2px solid #666;
 }
 
+header h2 {
+  margin: 0.75rem 0rem;
+}
+
 /* ------------------- MEDIA QUERIES ------------------- */
 @media screen and (max-width: 365px) {
   h1 {
