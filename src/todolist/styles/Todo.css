@@ -4,7 +4,7 @@
   width: auto;
   padding: 0.9rem 1rem;
   margin-bottom: 0.3rem;
-  background-color: #666;
+  background-color: #555;
   border-radius: 15px;
   text-align: left;
   animation: fadeIn 0.5s;
@@ -12,6 +12,10 @@
   -moz-animation: fadeIn 0.5s;
   -o-animation: fadeIn 0.5s;
   -ms-animation: fadeIn 0.5s;
+}
+
+.todo:hover {
+  background-color: #666;
 }
 
 #todo-data {

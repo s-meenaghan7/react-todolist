@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoList from './todolist/TodoList';
 import './TodoListContainer.css';
 
 export default function TodoListContainer() {
+  const [showCompletedTodos, setShowCompletedTodos] = useState(false);
+
+  const handleRadioButton = (value) => {
+    setShowCompletedTodos(value === 'true' ? true : false);
+  }
 
   return (
     <div className='container'>
@@ -11,9 +16,10 @@ export default function TodoListContainer() {
           <input
             type='radio'
             name='todo'
-            value='In Progress'
+            value={false}
             id='incomplete'
             defaultChecked
+            onChange={(e) => handleRadioButton(e.target.value)}
           />
           <label className='left' htmlFor='incomplete'>
             In Progress
@@ -23,8 +29,9 @@ export default function TodoListContainer() {
           <input
             type='radio'
             name='todo'
-            value='Complete'
+            value={true}
             id='complete'
+            onChange={(e) => handleRadioButton(e.target.value)}
           />
           <label className='right' htmlFor='complete'>
             Complete
@@ -32,7 +39,9 @@ export default function TodoListContainer() {
         </div>
       </div>
 
-      <TodoList />
+      <TodoList
+        showCompletedTodos={showCompletedTodos}
+      />
 
     </div>
   )

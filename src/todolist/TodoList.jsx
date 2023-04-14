@@ -4,9 +4,10 @@ import Todo from './components/Todo';
 import AddTodoControls from './components/AddTodoControls';
 import MenuBar from './components/MenuBar';
 
-export default function TodoList() {
+export default function TodoList({ showCompletedTodos }) {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -22,6 +23,8 @@ export default function TodoList() {
     setTodos(todos => todos.filter(todo => todo.id !== id));
   }
 
+  // function to move the designated (completed) todo from todos to completeTodos.
+
   return (
     <div className='inner-container'>
       <MenuBar
@@ -30,13 +33,22 @@ export default function TodoList() {
 
       <div className='todolist'>
         {
-          todos.map((todo, i) =>
-            <Todo key={todo.id}
-              todo={todo}
-              position={i + 1}
-              removeTodo={removeTodo}
-            />
-          )
+          showCompletedTodos ?
+            completeTodos.map((completeTodo, i) =>
+              <Todo key={completeTodo.id}
+                todo={completeTodo}
+                position={i + 1}
+                removeTodo={removeTodo}
+              />
+            )
+            :
+            todos.map((todo, i) =>
+              <Todo key={todo.id}
+                todo={todo}
+                position={i + 1}
+                removeTodo={removeTodo}
+              />
+            )
         }
       </div>
 

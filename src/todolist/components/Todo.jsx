@@ -19,6 +19,10 @@ export default function Todo({ todo: {todo, id}, position, removeTodo }) {
       setIsUpdating(false);
   }
 
+  const completeTodo = () => {
+    setIsComplete(true);
+  }
+
   return (
     <div className='todo'>
       <span>
@@ -66,7 +70,7 @@ export default function Todo({ todo: {todo, id}, position, removeTodo }) {
           type='button'
           id='complete-btn'
           title='Mark this todo completed'
-          onClick={() => console.log(isComplete)}
+          onClick={() => completeTodo()}
         >
           DONE
         </button>
