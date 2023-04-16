@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Todo.css';
 
-export default function Todo({ todo: {todo, id}, position, removeTodo }) {
+export default function Todo({ todo: {id, todo}, position, removeTodo }) {
   const [thisTodo, setThisTodo] = useState(todo);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
@@ -20,6 +20,7 @@ export default function Todo({ todo: {todo, id}, position, removeTodo }) {
   }
 
   const completeTodo = () => {
+    // moveTodoToCompleteTodos(id); // removed from props
     setIsComplete(true);
   }
 

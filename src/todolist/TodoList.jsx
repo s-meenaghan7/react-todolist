@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './TodoList.css';
 import Todo from './components/Todo';
 import AddTodoControls from './components/AddTodoControls';
 import MenuBar from './components/MenuBar';
 
 export default function TodoList({ showCompletedTodos }) {
+  const nextId = useRef(1);
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
   const [completeTodos, setCompleteTodos] = useState([]);
@@ -13,8 +14,10 @@ export default function TodoList({ showCompletedTodos }) {
     e.preventDefault();
     if (todo.trim() === '') return;
 
-    const newId = todos.at(-1) ? todos.at(-1).id + 1 : 1;
-    const newTodo = { id: newId, todo: todo };
+    // const newId = todos.at(-1) ? todos.at(-1).id + 1 : 1;
+    const newTodo = { id: nextId.current, todo: todo };
+
+    nextId.current = nextId.current + 1;
     setTodos([...todos, newTodo]);
     setTodo('');
   }
@@ -23,7 +26,12 @@ export default function TodoList({ showCompletedTodos }) {
     setTodos(todos => todos.filter(todo => todo.id !== id));
   }
 
-  // function to move the designated (completed) todo from todos to completeTodos.
+  // const moveTodoToCompleteTodos = (id) => {
+  //   const completedTodo = todos.find(todo => todo.id === id);
+
+  //   setCompleteTodos([...completeTodos, completedTodo]);
+  //   removeTodo(id);
+  // }
 
   return (
     <div className='inner-container'>
@@ -47,6 +55,7 @@ export default function TodoList({ showCompletedTodos }) {
                 todo={todo}
                 position={i + 1}
                 removeTodo={removeTodo}
+                // moveTodoToCompleteTodos={moveTodoToCompleteTodos}
               />
             )
         }
