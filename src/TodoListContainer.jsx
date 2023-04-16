@@ -5,10 +5,6 @@ import './TodoListContainer.css';
 export default function TodoListContainer() {
   const [showCompletedTodos, setShowCompletedTodos] = useState(false);
 
-  const handleRadioButton = (value) => {
-    setShowCompletedTodos(value === 'true' ? true : false);
-  }
-
   return (
     <div className='container'>
       <div className='tab-container'>
@@ -19,7 +15,7 @@ export default function TodoListContainer() {
             value={false}
             id='incomplete'
             defaultChecked
-            onChange={(e) => handleRadioButton(e.target.value)}
+            onChange={() => setShowCompletedTodos(false)}
           />
           <label className='left' htmlFor='incomplete'>
             In Progress
@@ -31,7 +27,7 @@ export default function TodoListContainer() {
             name='todo'
             value={true}
             id='complete'
-            onChange={(e) => handleRadioButton(e.target.value)}
+            onChange={() => setShowCompletedTodos(true)}
           />
           <label className='right' htmlFor='complete'>
             Complete
