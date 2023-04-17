@@ -14,8 +14,7 @@ export default function TodoList({ showCompletedTodos }) {
     e.preventDefault();
     if (todo.trim() === '') return;
 
-    // const newId = todos.at(-1) ? todos.at(-1).id + 1 : 1;
-    const newTodo = { id: nextId.current, todo: todo };
+    const newTodo = { id: nextId.current, todo: todo, isComplete: false };
 
     nextId.current = nextId.current + 1;
     setTodos([...todos, newTodo]);
@@ -26,12 +25,10 @@ export default function TodoList({ showCompletedTodos }) {
     setTodos(todos => todos.filter(todo => todo.id !== id));
   }
 
-  // const moveTodoToCompleteTodos = (id) => {
-  //   const completedTodo = todos.find(todo => todo.id === id);
-
-  //   setCompleteTodos([...completeTodos, completedTodo]);
-  //   removeTodo(id);
-  // }
+  const completeTodo = (todo) => {
+    setCompleteTodos([...completeTodos, { ...todo, isComplete: true }]);
+    removeTodo(todo.id);
+  }
 
   return (
     <div className='inner-container'>
@@ -55,7 +52,7 @@ export default function TodoList({ showCompletedTodos }) {
                 todo={todo}
                 position={i + 1}
                 removeTodo={removeTodo}
-                // moveTodoToCompleteTodos={moveTodoToCompleteTodos}
+                completeTodo={completeTodo}
               />
             )
         }

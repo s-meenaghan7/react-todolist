@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/Todo.css';
 
-export default function Todo({ todo: {id, todo}, position, removeTodo }) {
-  const [thisTodo, setThisTodo] = useState(todo);
+export default function Todo({ todo, position, removeTodo, completeTodo }) {
+  const [thisTodo, setThisTodo] = useState(todo.todo);
   const [isUpdating, setIsUpdating] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
 
   const startUpdating = () => {
-    if (!isComplete) {
-      setIsUpdating(true);
-    }
+    if (!todo.isComplete) setIsUpdating(true);
   }
 
   const exitUpdating = (e) => {
@@ -17,11 +14,6 @@ export default function Todo({ todo: {id, todo}, position, removeTodo }) {
 
     if (thisTodo.trim() !== '')
       setIsUpdating(false);
-  }
-
-  const completeTodo = () => {
-    // moveTodoToCompleteTodos(id); // removed from props
-    setIsComplete(true);
   }
 
   return (
@@ -50,32 +42,37 @@ export default function Todo({ todo: {id, todo}, position, removeTodo }) {
             <input type='submit' style={{ "display": "none" }} />
           </form>
       }
-      <div className='btn-container'>
-        <button
-          type='button'
-          id='edit-btn'
-          title='Edit this todo'
-          onClick={() => startUpdating()}
-        >
-          EDIT
-        </button>
-        <button
-          type='button'
-          id='delete-btn'
-          title='Delete this todo'
-          onClick={() => removeTodo(id)}
-        >
-          DELETE
-        </button>
-        <button
-          type='button'
-          id='complete-btn'
-          title='Mark this todo completed'
-          onClick={() => completeTodo()}
-        >
-          DONE
-        </button>
-      </div>
+      {
+        todo.isComplete ?
+          null
+          :
+          <div className='btn-container'>
+            <button
+              type='button'
+              id='edit-btn'
+              title='Edit this todo'
+              onClick={() => startUpdating()}
+            >
+              EDIT
+            </button>
+            <button
+              type='button'
+              id='delete-btn'
+              title='Delete this todo'
+              onClick={() => removeTodo(todo.id)}
+            >
+              DELETE
+            </button>
+            <button
+              type='button'
+              id='complete-btn'
+              title='Mark this todo completed'
+              onClick={() => completeTodo(todo)}
+            >
+              DONE
+            </button>
+          </div>
+      }
     </div>
   );
 }
