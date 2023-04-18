@@ -40,5 +40,6 @@
 }
 
 #add-todo-btn:disabled {
+  cursor: auto;
   background-color: #464646;
 }

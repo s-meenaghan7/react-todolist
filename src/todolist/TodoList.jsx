@@ -33,7 +33,8 @@ export default function TodoList({ showCompletedTodos }) {
   return (
     <div className='inner-container'>
       <MenuBar
-        todoCount={todos.length}
+        showCompletedTodos={showCompletedTodos}
+        todoCount={showCompletedTodos ? completeTodos.length : todos.length}
       />
 
       <div className='todolist'>
