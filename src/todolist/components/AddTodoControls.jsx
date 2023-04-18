@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/AddTodoControls.css';
 
-export default function AddTodoControls({ todo, setTodo, addTodo }) {
+export default function AddTodoControls({ todo, setTodo, addTodo, disabled }) {
   return (
     <form
       className='controls'
@@ -13,6 +13,7 @@ export default function AddTodoControls({ todo, setTodo, addTodo }) {
         type='text'
         value={todo}
         id='todo-input'
+        disabled={disabled}
         placeholder='Create new todo...'
         onChange={(e) => setTodo(e.target.value)}
       />
@@ -20,7 +21,10 @@ export default function AddTodoControls({ todo, setTodo, addTodo }) {
         type='submit'
         id='add-todo-btn'
         title='Add todo'
-      >+</button>
+        disabled={disabled}
+      >
+        <span className="material-icons-round" style={{ "fontSize": "35px" }}>add</span>
+      </button>
     </form>
   );
 }

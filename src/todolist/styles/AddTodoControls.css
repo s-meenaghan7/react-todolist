@@ -38,3 +38,7 @@
 #add-todo-btn:active {
   background-color: #080;
 }
+
+#add-todo-btn:disabled {
+  background-color: #464646;
+}

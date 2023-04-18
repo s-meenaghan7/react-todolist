@@ -62,6 +62,7 @@ export default function TodoList({ showCompletedTodos }) {
         todo={todo}
         setTodo={setTodo}
         addTodo={addTodo}
+        disabled={showCompletedTodos}
       />
     </div>
   )
