@@ -50,26 +50,26 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
             <button
               type='button'
               id='edit-btn'
-              title='Edit this todo'
+              title='Edit todo'
               onClick={() => startUpdating()}
             >
-              EDIT
+              <span className="material-icons-outlined">edit</span>
             </button>
             <button
               type='button'
               id='delete-btn'
-              title='Delete this todo'
+              title='Delete todo'
               onClick={() => removeTodo(todo.id)}
             >
-              DELETE
+              <span className="material-icons-outlined">delete</span>
             </button>
             <button
               type='button'
               id='complete-btn'
-              title='Mark this todo completed'
+              title='Complete todo'
               onClick={() => completeTodo(todo)}
             >
-              DONE
+              <span className="material-icons-outlined">done</span>
             </button>
           </div>
       }

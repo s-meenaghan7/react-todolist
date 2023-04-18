@@ -1,6 +1,7 @@
 .todo {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: auto;
   padding: 0.9rem 1rem;
   margin-bottom: 0.3rem;
@@ -67,8 +68,8 @@
 }
 
 .btn-container > button {
-  padding: 0.3rem;
-  border-radius: 5px;
+  padding: 0.15rem;
+  border-radius: 7px;
   border: none;
   cursor: pointer;
 }
