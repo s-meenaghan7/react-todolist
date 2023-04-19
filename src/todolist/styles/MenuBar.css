@@ -20,6 +20,10 @@ header h2 {
   border-radius: 5px;
 }
 
+#menu-btn:disabled {
+  cursor: auto;
+}
+
 /* ------------------- MEDIA QUERIES ------------------- */
 @media screen and (max-width: 365px) {
   h2 {

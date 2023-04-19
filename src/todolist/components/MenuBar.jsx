@@ -8,6 +8,7 @@ export default function MenuBar({ todoCount, showCompletedTodos }) {
         <button
           id='menu-btn'
           type='button'
+          disabled={showCompletedTodos}
         >
           <span
             className="material-icons-outlined"
