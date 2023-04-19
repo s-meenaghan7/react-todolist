@@ -14,11 +14,19 @@
   -moz-animation: fadeIn 0.5s;
   -o-animation: fadeIn 0.5s;
   -ms-animation: fadeIn 0.5s;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, filter 0.2s;
+}
+
+.pending-delete {
+  background-color: #c00;
+}
+
+.pending-complete {
+  background-color: #080;
 }
 
 .todo:hover {
-  background-color: #666;
+  filter: brightness(115%);
 }
 
 #todo-data {
@@ -72,8 +80,8 @@
 
 .btn-container > button {
   padding: 0.15rem;
+  border: 2px solid #000;
   border-radius: 7px;
-  border: none;
   cursor: pointer;
 }
 

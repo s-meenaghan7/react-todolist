@@ -5,6 +5,7 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
   const [thisTodo, setThisTodo] = useState(todo.todo);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isPendingDelete, setIsPendingDelete] = useState(false);
+  const [isPendingComplete, setIsPendingComplete] = useState(false);
 
   const startUpdating = () => {
     if (!todo.isComplete) setIsUpdating(true);
@@ -13,14 +14,12 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
   const exitUpdating = (e) => {
     e.preventDefault();
 
-    if (thisTodo.trim() !== '')
-      setIsUpdating(false);
+    if (thisTodo.trim() !== '') setIsUpdating(false);
   }
 
   return (
     <div 
-      className='todo'
-      style={ isPendingDelete ? {"backgroundColor": "#c00"} : {} }
+      className={`todo ${ isPendingDelete ? 'pending-delete' : isPendingComplete ? 'pending-complete' : '' }`}
     >
       <span>
         {position}.
@@ -31,25 +30,30 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
             Delete this todo?
           </span>
           :
-          !isUpdating ?
-            <span
-              id='todo-data'
-              onDoubleClick={() => startUpdating()}
-            >
-              {thisTodo}
+          isPendingComplete ?
+            <span>
+              Complete this todo?
             </span>
             :
-            <form autoComplete='off' onSubmit={exitUpdating}>
-              <input
-                autoFocus
-                type='text'
-                value={thisTodo}
-                id='edit-todo-input'
-                onBlur={(e) => exitUpdating(e)}
-                onChange={(e) => setThisTodo(e.target.value)}
-              />
-              <input type='submit' style={{ "display": "none" }} />
-            </form>
+            !isUpdating ?
+              <span
+                id='todo-data'
+                onDoubleClick={() => startUpdating()}
+              >
+                {thisTodo}
+              </span>
+              :
+              <form autoComplete='off' onSubmit={exitUpdating}>
+                <input
+                  autoFocus
+                  type='text'
+                  value={thisTodo}
+                  id='edit-todo-input'
+                  onBlur={(e) => exitUpdating(e)}
+                  onChange={(e) => setThisTodo(e.target.value)}
+                />
+                <input type='submit' style={{ "display": "none" }} />
+              </form>
       }
       {
         todo.isComplete ?
@@ -75,32 +79,52 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
               </button>
             </div>
             :
-            <div className='btn-container'>
-              <button
-                type='button'
-                id='edit-btn'
-                title='Edit todo'
-                onClick={() => startUpdating()}
-              >
-                <span className="material-icons-outlined">edit</span>
-              </button>
-              <button
-                type='button'
-                id='delete-btn'
-                title='Delete todo'
-                onClick={() => setIsPendingDelete(true)}
-              >
-                <span className="material-icons-outlined">delete</span>
-              </button>
-              <button
-                type='button'
-                id='complete-btn'
-                title='Complete todo'
-                onClick={() => completeTodo(todo)}
-              >
-                <span className="material-icons-outlined">done</span>
-              </button>
-            </div>
+            isPendingComplete ?
+              <div className='btn-container'>
+                <button
+                  type='button'
+                  id='complete-btn'
+                  title='Confirm Complete Todo'
+                  onClick={() => completeTodo(todo)}
+                >
+                  <span className="material-icons-outlined">done</span>
+                </button>
+                <button
+                  type='button'
+                  id='cancel-btn'
+                  title='Cancel'
+                  onClick={() => setIsPendingComplete(false)}
+                >
+                  <span className='material-icons-round'>close</span>
+                </button>
+              </div>
+              :
+              <div className='btn-container'>
+                <button
+                  type='button'
+                  id='edit-btn'
+                  title='Edit todo'
+                  onClick={() => startUpdating()}
+                >
+                  <span className="material-icons-outlined">edit</span>
+                </button>
+                <button
+                  type='button'
+                  id='delete-btn'
+                  title='Delete todo'
+                  onClick={() => setIsPendingDelete(true)}
+                >
+                  <span className="material-icons-outlined">delete</span>
+                </button>
+                <button
+                  type='button'
+                  id='complete-btn'
+                  title='Complete todo'
+                  onClick={() => setIsPendingComplete(true)}
+                >
+                  <span className="material-icons-outlined">done</span>
+                </button>
+              </div>
       }
     </div>
   );
