@@ -19,7 +19,8 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
 
   return (
     <div 
-      className={`todo ${ isPendingDelete ? 'pending-delete' : isPendingComplete ? 'pending-complete' : '' }`}
+      className={`todo ${ isPendingDelete ? 'pending-delete' : 
+        isPendingComplete || todo.isComplete ? 'pending-complete' : '' }`}
     >
       <span>
         {position}.
