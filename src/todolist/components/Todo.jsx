@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/Todo.css';
+import '../styles/TodoActionsButtonGroup.css';
+import ConfirmActionButtonGroup from './ConfirmActionButtonGroup';
+import TodoActionsButtonGroup from './TodoActionsButtonGroup';
 
 export default function Todo({ todo, position, removeTodo, completeTodo }) {
   const [thisTodo, setThisTodo] = useState(todo.todo);
@@ -18,9 +21,9 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
   }
 
   return (
-    <div 
-      className={`todo ${ isPendingDelete ? 'pending-delete' : 
-        isPendingComplete || todo.isComplete ? 'pending-complete' : '' }`}
+    <div
+      className={`todo ${isPendingDelete ? 'pending-delete' :
+        isPendingComplete || todo.isComplete ? 'pending-complete' : ''}`}
     >
       <span>
         {position}.
@@ -61,71 +64,24 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
           null
           :
           isPendingDelete ?
-            <div className='btn-container'>
-              <button
-                type='button'
-                id='complete-btn'
-                title='Confirm Delete Todo'
-                onClick={() => removeTodo(todo.id)}
-              >
-                <span className="material-icons-outlined">done</span>
-              </button>
-              <button
-                type='button'
-                id='cancel-btn'
-                title='Cancel'
-                onClick={() => setIsPendingDelete(false)}
-              >
-                <span className='material-icons-round'>close</span>
-              </button>
-            </div>
+            <ConfirmActionButtonGroup
+              confirmArg={todo.id}
+              confirmFunction={removeTodo}
+              cancelFunction={setIsPendingDelete}
+            />
             :
             isPendingComplete ?
-              <div className='btn-container'>
-                <button
-                  type='button'
-                  id='complete-btn'
-                  title='Confirm Complete Todo'
-                  onClick={() => completeTodo(todo)}
-                >
-                  <span className="material-icons-outlined">done</span>
-                </button>
-                <button
-                  type='button'
-                  id='cancel-btn'
-                  title='Cancel'
-                  onClick={() => setIsPendingComplete(false)}
-                >
-                  <span className='material-icons-round'>close</span>
-                </button>
-              </div>
+              <ConfirmActionButtonGroup
+                confirmArg={todo}
+                confirmFunction={completeTodo}
+                cancelFunction={setIsPendingComplete}
+              />
               :
-              <div className='btn-container'>
-                <button
-                  type='button'
-                  id='edit-btn'
-                  title='Edit todo'
-                  onClick={() => startUpdating()}
-                >
-                  <span className="material-icons-outlined">edit</span>
-                </button>
-                <button
-                  type='button'
-                  id='delete-btn'
-                  title='Delete todo'
-                  onClick={() => setIsPendingDelete(true)}
-                >
-                  <span className="material-icons-outlined">delete</span>
-                </button>
-                <button
-                  type='button'
-                  id='complete-btn'
-                  title='Complete todo'
-                  onClick={() => setIsPendingComplete(true)}
-                >
-                  <span className="material-icons-outlined">done</span>
-                </button>
-              </div>
+              <TodoActionsButtonGroup
+                editFunction={startUpdating}
+                deleteFunction={setIsPendingDelete}
+                completeFunction={setIsPendingComplete}
+              />
       }
     </div>
   );

@@ -1,0 +1,32 @@
+import React from 'react';
+
+export default function TodoActionsButtonGroup({ editFunction, deleteFunction, completeFunction }) {
+  return (
+    <div className='btn-container'>
+      <button
+        type='button'
+        id='edit-btn'
+        title='Edit todo'
+        onClick={() => editFunction()}
+      >
+        <span className="material-icons-outlined">edit</span>
+      </button>
+      <button
+        type='button'
+        id='delete-btn'
+        title='Delete todo'
+        onClick={() => deleteFunction(true)}
+      >
+        <span className="material-icons-outlined">delete</span>
+      </button>
+      <button
+        type='button'
+        id='complete-btn'
+        title='Complete todo'
+        onClick={() => completeFunction(true)}
+      >
+        <span className="material-icons-outlined">done</span>
+      </button>
+    </div>
+  );
+}

@@ -71,32 +71,3 @@
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
-/* ------------------- BUTTONS ------------------- */
-.btn-container {
-  display: flex;
-  gap: 0.3rem;
-}
-
-.btn-container > button {
-  padding: 0.15rem;
-  border: 2px solid #000;
-  border-radius: 7px;
-  cursor: pointer;
-}
-
-#complete-btn {
-  background-color: #0b0;
-}
-
-#delete-btn {
-  background-color: #b00;
-}
-
-#edit-btn {
-  background-color: #a50;
-}
-
-#cancel-btn {
-  background-color: #777;
-}
