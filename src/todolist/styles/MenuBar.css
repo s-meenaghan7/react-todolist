@@ -18,6 +18,7 @@ header h2 {
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  margin: 0.75rem 0rem;
 }
 
 #menu-btn:disabled {
@@ -26,13 +27,7 @@ header h2 {
 
 /* ------------------- MEDIA QUERIES ------------------- */
 @media screen and (max-width: 365px) {
-  h2 {
-    font-size: 1em;
-  }
-}
-
-@media screen and (max-width: 290px) {
-  h2 {
+  header h2 {
     display: none;
   }
 }

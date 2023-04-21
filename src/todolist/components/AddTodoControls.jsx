@@ -23,7 +23,7 @@ export default function AddTodoControls({ todo, setTodo, addTodo, disabled }) {
         title='Add todo'
         disabled={disabled}
       >
-        <span className="material-icons-round" style={{ "fontSize": "35px" }}>add</span>
+        <span className="material-icons-round" id='add-todo-btn-icon'>add</span>
       </button>
     </form>
   );

@@ -15,7 +15,6 @@
 }
 
 #add-todo-btn {
-  content: '';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +22,6 @@
   width: 50px;
   border: none;
   border-radius: 50%;
-  font-size: 2rem;
   padding: 2rem;
   margin: 0.75rem;
   cursor: pointer;
@@ -42,4 +40,21 @@
 #add-todo-btn:disabled {
   cursor: auto;
   background-color: #464646;
+}
+
+#add-todo-btn-icon {
+  font-size: 35px;
+}
+
+/* ------------------- MEDIA QUERIES ------------------- */
+@media screen and (max-width: 365px) {
+  #add-todo-btn {
+    height: 25px;
+    width: 25px;
+    padding: 1.5rem;
+  }
+
+  #add-todo-btn-icon {
+    font-size: 25px;
+  }
 }

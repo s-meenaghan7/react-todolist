@@ -9,7 +9,7 @@ export default function TodoActionsButtonGroup({ editFunction, deleteFunction, c
         title='Edit todo'
         onClick={() => editFunction()}
       >
-        <span className="material-icons-outlined">edit</span>
+        <span className="material-icons-outlined todo-btn-icon">edit</span>
       </button>
       <button
         type='button'
@@ -17,7 +17,7 @@ export default function TodoActionsButtonGroup({ editFunction, deleteFunction, c
         title='Delete todo'
         onClick={() => deleteFunction(true)}
       >
-        <span className="material-icons-outlined">delete</span>
+        <span className="material-icons-outlined todo-btn-icon">delete</span>
       </button>
       <button
         type='button'
@@ -25,7 +25,7 @@ export default function TodoActionsButtonGroup({ editFunction, deleteFunction, c
         title='Complete todo'
         onClick={() => completeFunction(true)}
       >
-        <span className="material-icons-outlined">done</span>
+        <span className="material-icons-outlined todo-btn-icon">done</span>
       </button>
     </div>
   );

@@ -25,3 +25,10 @@
 #cancel-btn {
   background-color: #777;
 }
+
+/* ------------------- MEDIA QUERIES ------------------- */
+@media screen and (max-width: 400px) {
+  .todo-btn-icon {
+    font-size: 15px;
+  }
+}

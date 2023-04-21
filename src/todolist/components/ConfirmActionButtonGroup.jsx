@@ -9,7 +9,7 @@ export default function ConfirmActionButtonGroup({ confirmArg, confirmFunction, 
         title='Confirm'
         onClick={() => confirmFunction(confirmArg)}
       >
-        <span className="material-icons-outlined">done</span>
+        <span className="material-icons-outlined todo-btn-icon">done</span>
       </button>
       <button
         type='button'
@@ -17,7 +17,7 @@ export default function ConfirmActionButtonGroup({ confirmArg, confirmFunction, 
         title='Cancel'
         onClick={() => cancelFunction(false)}
       >
-        <span className='material-icons-round'>close</span>
+        <span className='material-icons-round todo-btn-icon'>close</span>
       </button>
     </div>
   );
