@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function TodoActionsButtonGroup({ editFunction, deleteFunction, completeFunction }) {
+export default function TodoActionsButtonGroup({ visibility, editFunction, deleteFunction, completeFunction }) {
   return (
-    <div className='btn-container'>
+    <div className='btn-container' style={{ "visibility": visibility ? "visible" : "hidden" }}>
       <button
         type='button'
         id='edit-btn'

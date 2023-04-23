@@ -9,6 +9,7 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [isPendingDelete, setIsPendingDelete] = useState(false);
   const [isPendingComplete, setIsPendingComplete] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
 
   const startUpdating = () => {
     if (!todo.isComplete) setIsUpdating(true);
@@ -24,6 +25,8 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
     <div
       className={`todo ${isPendingDelete ? 'pending-delete' :
         isPendingComplete || todo.isComplete ? 'pending-complete' : ''}`}
+      onMouseEnter={() => setShowButtons(true)}
+      onMouseLeave={() => setShowButtons(false)}
     >
       <span>
         {position}.
@@ -78,6 +81,7 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
               />
               :
               <TodoActionsButtonGroup
+                visibility={showButtons}
                 editFunction={startUpdating}
                 deleteFunction={setIsPendingDelete}
                 completeFunction={setIsPendingComplete}
