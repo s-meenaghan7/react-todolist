@@ -14,17 +14,6 @@ header h2 {
   margin: 0.75rem 0.5rem;
 }
 
-#menu-btn {
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  margin: 0.75rem 0rem;
-}
-
-#menu-btn:disabled {
-  cursor: auto;
-}
-
 /* ------------------- MEDIA QUERIES ------------------- */
 @media screen and (max-width: 365px) {
   header h2 {
