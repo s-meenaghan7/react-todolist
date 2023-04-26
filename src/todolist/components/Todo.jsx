@@ -75,7 +75,7 @@ export default function Todo({ todo, position, removeTodo, completeTodo }) {
             :
             isPendingComplete ?
               <ConfirmActionButtonGroup
-                confirmArg={todo}
+                confirmArg={{ ...todo, todo: thisTodo }}
                 confirmFunction={completeTodo}
                 cancelFunction={setIsPendingComplete}
               />
