@@ -8,7 +8,7 @@ export default function TodoList({ showCompletedTodos }) {
   const nextId = useRef(1);
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
-  const [completeTodos, setCompleteTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([]);
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function TodoList({ showCompletedTodos }) {
   }
 
   const completeTodo = (todo) => {
-    setCompleteTodos([...completeTodos, { ...todo, isComplete: true }]);
+    setCompletedTodos([...completedTodos, { ...todo, isComplete: true }]);
     removeTodo(todo.id);
   }
 
@@ -34,15 +34,15 @@ export default function TodoList({ showCompletedTodos }) {
     <div className='inner-container'>
       <MenuBar
         showCompletedTodos={showCompletedTodos}
-        todoCount={showCompletedTodos ? completeTodos.length : todos.length}
+        todoCount={showCompletedTodos ? completedTodos.length : todos.length}
       />
 
       <div className='todolist'>
         {
           showCompletedTodos ?
-            completeTodos.map((completeTodo, i) =>
-              <Todo key={completeTodo.id}
-                todo={completeTodo}
+            completedTodos.map((completedTodo, i) =>
+              <Todo key={completedTodo.id}
+                todo={completedTodo}
                 position={i + 1}
                 removeTodo={removeTodo}
               />
