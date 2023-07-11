@@ -2,6 +2,8 @@
 
 URL: https://splendid-stardust-3d180f.netlify.app
 
+*7/10/2023 - migrated project to TypeScript.*
+
 ## Description
 
 A to-do list app built with ReactJS using the Vite build tool. This simple app allows the user to view their to-dos in a list. Users can add, update, and delete their to-dos in the list, as well as mark them complete, using an intuitive user interface. The user can view their "In Progress" and "Complete" todos in two separate lists by using the tabs at the top of the screen.
@@ -11,14 +13,14 @@ A to-do list app built with ReactJS using the Vite build tool. This simple app a
 I was accustomed to using create-react-app to create ReactJS applications, but heard great things about Vite, and decided I wanted to give it try. Having never built a todo app before, I decided a todo app would be a fun side-project and that Vite would be my build tool. Vite has certainly lived up to it's positive reputation and I greatly recommend it as well. I will absolutely be using it for future applications.
 
 Creating this application was great practice for a few things.
-- To start, I made sure to design the UI first. I had an idea in mind, so I created a wireframe on paper with pencil. This really helped me hit the ground running when I started coding, because I knew what I was building and how it would look. It is immensely useful to have a wireframe or GUI mockup as a reference. While it may seem obvious that design should come before implementation, it can be very easy to want to just start coding when you have an idea, and things can quickly get messy, even with a simple todo app.
-- While an initial motivation for the project was to try out Vite, this project was also great practice for my ReactJS skills. The project is purely React; data is not persisted in anyway. With the app in its current state, it would not be too much work to hook up a database or persistence layer to the project. I decided against this though, as this application was meant to be a side project from a larger, more ambitious project.
+- To start, I made sure to design the UI first. I had an idea in mind, so I created a wireframe on paper with pencil. This really helped me hit the ground running when I started coding, because I knew what I was building and how it would look. It is immensely useful to have a wireframe or GUI mockup as a reference. While it may seem obvious that design should come before implementation, it can be very easy to jump straight into coding when you have an idea, and things can quickly get messy, even with a simple todo app.
+- While an initial motivation for the project was to try out Vite, this project was also great practice for my ReactJS skills. The project is purely React; data is not (currently) persisted in anyway. With the app in its current state, it would not be too much work to hook up a database or persistence layer to the project. I decided against this though, as this application was meant to be a side project from a larger, more ambitious project.
 
 ---
 
 ## Example
 
-Here is a simple screenshot of the Todo app user interface:
+Below is a simple screenshot of the Todo app user interface. Edit, delete, and complete controls are visible when the user hovers their mouse over the todo (or taps the todo while on mobile devices). The 'In Progress' and 'Complete' tabs allow the user to switch between viewing their incomplete and completed todos, and the todo counter updates accordingly.
 ![todo-app-ui](assets/images/react-todo-example-ss.png)
 
 ---

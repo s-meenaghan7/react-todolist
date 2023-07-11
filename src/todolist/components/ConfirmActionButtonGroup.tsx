@@ -1,6 +1,13 @@
 import React from 'react';
+import { Todo } from '../types/Todo';
 
-export default function ConfirmActionButtonGroup({ confirmArg, confirmFunction, cancelFunction }) {
+type ConfirmActionButtonGroupProps = {
+  confirmArg: Todo;
+  confirmFunction: (todo: Todo) => void;
+  cancelFunction: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ConfirmActionButtonGroup: React.FC<ConfirmActionButtonGroupProps> = ({ confirmArg, confirmFunction, cancelFunction }) => {
   return (
     <div className='btn-container'>
       <button
@@ -22,3 +29,5 @@ export default function ConfirmActionButtonGroup({ confirmArg, confirmFunction, 
     </div>
   );
 }
+
+export default ConfirmActionButtonGroup;

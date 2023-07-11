@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default function TodoActionsButtonGroup({ visibility, editFunction, deleteFunction, completeFunction }) {
+type TodoActionsButtonGroupProps = {
+  visibility: boolean;
+  editFunction: () => void;
+  deleteFunction: React.Dispatch<React.SetStateAction<boolean>>;
+  completeFunction: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const TodoActionsButtonGroup: React.FC<TodoActionsButtonGroupProps> = ({ visibility, editFunction, deleteFunction, completeFunction }) => {
   return (
     <div className='btn-container' style={{ "visibility": visibility ? "visible" : "hidden" }}>
       <button
@@ -30,3 +37,5 @@ export default function TodoActionsButtonGroup({ visibility, editFunction, delet
     </div>
   );
 }
+
+export default TodoActionsButtonGroup;

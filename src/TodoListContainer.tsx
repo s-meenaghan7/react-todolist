@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TodoList from './todolist/TodoList';
 import './TodoListContainer.css';
 
-export default function TodoListContainer() {
+const TodoListContainer: React.FC = () => {
   const [showCompletedTodos, setShowCompletedTodos] = useState(false);
 
   return (
@@ -12,7 +12,6 @@ export default function TodoListContainer() {
           <input
             type='radio'
             name='todo'
-            value={false}
             id='incomplete'
             defaultChecked
             onChange={() => setShowCompletedTodos(false)}
@@ -25,7 +24,6 @@ export default function TodoListContainer() {
           <input
             type='radio'
             name='todo'
-            value={true}
             id='complete'
             onChange={() => setShowCompletedTodos(true)}
           />
@@ -42,3 +40,5 @@ export default function TodoListContainer() {
     </div>
   )
 }
+
+export default TodoListContainer;

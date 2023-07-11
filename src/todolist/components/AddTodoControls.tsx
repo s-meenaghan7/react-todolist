@@ -1,7 +1,14 @@
 import React from 'react';
 import '../styles/AddTodoControls.css';
 
-export default function AddTodoControls({ todo, setTodo, addTodo, disabled }) {
+type AddTodoControlsProps = {
+  todo: string;
+  setTodo: React.Dispatch<React.SetStateAction<string>>;
+  addTodo: (e: React.FormEvent<HTMLFormElement>) => void;
+  disabled: boolean;
+};
+
+const AddTodoControls: React.FC<AddTodoControlsProps> = ({ todo, setTodo, addTodo, disabled }) => {
   return (
     <form
       className='controls'
@@ -28,3 +35,5 @@ export default function AddTodoControls({ todo, setTodo, addTodo, disabled }) {
     </form>
   );
 }
+
+export default AddTodoControls;

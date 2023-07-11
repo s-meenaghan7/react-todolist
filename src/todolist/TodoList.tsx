@@ -1,16 +1,21 @@
 import { useRef, useState } from 'react';
 import './TodoList.css';
-import Todo from './components/Todo';
+import TodoComponent from './components/TodoComponent';
 import AddTodoControls from './components/AddTodoControls';
 import MenuBar from './components/MenuBar';
+import { Todo } from './types/Todo';
 
-export default function TodoList({ showCompletedTodos }) {
+type TodoListProps = {
+  showCompletedTodos: boolean;
+};
+
+const TodoList: React.FC<TodoListProps> = ({ showCompletedTodos }) => {
   const nextId = useRef(1);
   const [todo, setTodo] = useState('');
-  const [todos, setTodos] = useState([]);
-  const [completedTodos, setCompletedTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [completedTodos, setCompletedTodos] = useState<Todo[]>([]);
 
-  const addTodo = (e) => {
+  const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (todo.trim() === '') return;
 
@@ -21,13 +26,13 @@ export default function TodoList({ showCompletedTodos }) {
     setTodo('');
   }
 
-  const removeTodo = (id) => {
-    setTodos(todos => todos.filter(todo => todo.id !== id));
+  const removeTodo = (todo: Todo) => {
+    setTodos(todos => todos.filter(t => t.id !== todo.id));
   }
 
-  const completeTodo = (todo) => {
+  const completeTodo = (todo: Todo) => {
     setCompletedTodos([...completedTodos, { ...todo, isComplete: true }]);
-    removeTodo(todo.id);
+    removeTodo(todo);
   }
 
   return (
@@ -41,15 +46,16 @@ export default function TodoList({ showCompletedTodos }) {
         {
           showCompletedTodos ?
             completedTodos.map((completedTodo, i) =>
-              <Todo key={completedTodo.id}
+              <TodoComponent key={completedTodo.id}
                 todo={completedTodo}
                 position={i + 1}
                 removeTodo={removeTodo}
+                completeTodo={completeTodo}
               />
             )
             :
             todos.map((todo, i) =>
-              <Todo key={todo.id}
+              <TodoComponent key={todo.id}
                 todo={todo}
                 position={i + 1}
                 removeTodo={removeTodo}
@@ -68,3 +74,5 @@ export default function TodoList({ showCompletedTodos }) {
     </div>
   )
 }
+
+export default TodoList;

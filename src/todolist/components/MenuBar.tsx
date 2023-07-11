@@ -1,7 +1,12 @@
 import React from 'react';
 import '../styles/MenuBar.css';
 
-export default function MenuBar({ todoCount, showCompletedTodos }) {
+type MenuBarProps = {
+  todoCount: number;
+  showCompletedTodos: boolean;
+};
+
+const MenuBar: React.FC<MenuBarProps> = ({ todoCount, showCompletedTodos }) => {
   return (
     <header className='menu-bar'>
       <h2>My Todos</h2>
@@ -13,3 +18,5 @@ export default function MenuBar({ todoCount, showCompletedTodos }) {
     </header>
   );
 }
+
+export default MenuBar;
