@@ -14,7 +14,7 @@ type TodoComponentProps = {
 
 type EventUnion = React.FocusEvent<HTMLInputElement, Element> | React.FormEvent<HTMLFormElement>;
 
-const TodoComponent: React.FC <TodoComponentProps> = ({ todo, position, removeTodo, completeTodo }) => {
+const TodoComponent: React.FC<TodoComponentProps> = ({ todo, position, removeTodo, completeTodo }) => {
   const [thisTodo, setThisTodo] = useState(todo.todo);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isPendingDelete, setIsPendingDelete] = useState(false);
@@ -42,7 +42,7 @@ const TodoComponent: React.FC <TodoComponentProps> = ({ todo, position, removeTo
       <span>
         {position}.
       </span>
-      {
+      { /* ---------- TODO CONTENT ---------- */
         isPendingDelete ?
           <span>
             Delete this todo?
@@ -73,30 +73,38 @@ const TodoComponent: React.FC <TodoComponentProps> = ({ todo, position, removeTo
                 <input type='submit' style={{ "display": "none" }} />
               </form>
       }
-      {
+      { /* ---------- TODO BUTTONS ---------- */
         todo.isComplete ?
           null
           :
-          isPendingDelete ?
-            <ConfirmActionButtonGroup
-              confirmArg={{ ...todo, todo: thisTodo }}
-              confirmFunction={removeTodo}
-              cancelFunction={setIsPendingDelete}
+          isUpdating && thisTodo.trim() === '' && !isPendingDelete ?
+            <TodoActionsButtonGroup
+              visibility={showButtons}
+              editFunction={startUpdating}
+              deleteFunction={setIsPendingDelete}
+              completeFunction={() => null}
             />
             :
-            isPendingComplete ?
+            isPendingDelete ?
               <ConfirmActionButtonGroup
                 confirmArg={{ ...todo, todo: thisTodo }}
-                confirmFunction={completeTodo}
-                cancelFunction={setIsPendingComplete}
+                confirmFunction={removeTodo}
+                cancelFunction={setIsPendingDelete}
               />
               :
-              <TodoActionsButtonGroup
-                visibility={showButtons}
-                editFunction={startUpdating}
-                deleteFunction={setIsPendingDelete}
-                completeFunction={setIsPendingComplete}
-              />
+              isPendingComplete ?
+                <ConfirmActionButtonGroup
+                  confirmArg={{ ...todo, todo: thisTodo }}
+                  confirmFunction={completeTodo}
+                  cancelFunction={setIsPendingComplete}
+                />
+                :
+                <TodoActionsButtonGroup
+                  visibility={showButtons}
+                  editFunction={startUpdating}
+                  deleteFunction={setIsPendingDelete}
+                  completeFunction={setIsPendingComplete}
+                />
       }
     </div>
   );
